@@ -34,3 +34,6 @@ build/
 
 ### env vars ###
 .env
+
+### Node.js ###
+node_modules/
