@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  conversation-service:
+    build: .
+    container_name: agentathreya-conversationservice
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE}
+      - SPRING_DATASOURCE_URL=${SPRING_DATASOURCE_URL}
+      - SPRING_DATASOURCE_USERNAME=${SPRING_DATASOURCE_USERNAME}
+      - SPRING_DATASOURCE_PASSWORD=${SPRING_DATASOURCE_PASSWORD}
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:16
+    container_name: agentathreya-postgres-db
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
