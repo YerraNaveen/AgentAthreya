@@ -3,11 +3,11 @@ spring:
     name: AgentAthreya-ConversationService
   # profiles:
   #   active: docker
-  
+
   datasource:
-    url: jdbc:postgresql://localhost:5432/agentathreya
-    username: naveen
-    password: naveen123
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
     driver-class-name: org.postgresql.Driver
 
   jpa:
@@ -31,8 +31,8 @@ logging:
       agentathreya: DEBUG
 
 jwt:
-  secret: GR8Zt4X6hnt5XBgAZd1svN0BL_fCJSraZ8DEXnuE9Wo
-  expiration: 360000
+  secret: ${JWT_SECRET}
+  expiration: ${JWT_EXPIRATION}
 
 springdoc:
   api-docs:
@@ -44,5 +44,5 @@ springdoc:
 
 llm:
   api:
-    url: https://api.openai.com/v1/chat/completions
+    url: ${LLM_API_URL}
     key: ${OPENAI_API_KEY}
