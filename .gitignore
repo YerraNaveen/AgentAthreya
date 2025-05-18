@@ -35,6 +35,12 @@ build/
 ### env vars ###
 .env
 git_push.bat
+git_sync.log
 
 ### Node.js ###
 node_modules/
+AgentAthreya-Client.code-workspace
+AgentAthreya-ConversationService/logs/app.log
+*.gz
+AgentAthreya-ConversationService/logs/app.log
+/AgentAthreya-ConversationService/logs

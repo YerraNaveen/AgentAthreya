@@ -13,6 +13,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
@@ -35,13 +36,15 @@ public class LLMService {
 
     private final RestTemplate restTemplate = new RestTemplate();
     private final ObjectMapper objectMapper = new ObjectMapper();
-
+    
+    
+    @Async
     public String getLLMResponse(String userMessage) {
         try {
             // Prepare headers
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
-            headers.setBearerAuth(llmApiKey); // Ensure this key is from a project with billing
+            headers.setBearerAuth(llmApiKey);
 
             // Build the request body using maps (no need to manually escape JSON)
             Map<String, Object> requestBody = new HashMap<>();
