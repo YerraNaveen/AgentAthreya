@@ -46,3 +46,5 @@ llm:
   api:
     url: ${LLM_API_URL}
     key: ${OPENAI_API_KEY}
+server:
+  port: 8081
