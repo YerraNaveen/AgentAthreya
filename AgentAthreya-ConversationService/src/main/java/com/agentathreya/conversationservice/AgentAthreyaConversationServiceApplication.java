@@ -11,6 +11,7 @@ public class AgentAthreyaConversationServiceApplication  implements CommandLineR
     @Value("${jwt.secret:NOT_LOADED}")  // Checks 'jwt.secret' from .env/application.yml
     private String jwtSecret;
 
+
     @Value("${DB_URL:NOT_LOADED}")
     private String dbUrl;
 
